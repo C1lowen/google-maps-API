@@ -22,7 +22,7 @@ public class GeoRestaurantsController {
     private GeoRestaurantsService geoRestaurantsService;
 
     @GetMapping
-    public ResponseEntity<?> getRestaurants(
+    public ResponseEntity<?> getNearbyRestaurants(
             @Valid @ModelAttribute RestaurantRequest request
     ) {
         List<RestaurantResponse> nearbyRestaurants = geoRestaurantsService.getNearbyRestaurants(request.getLat(), request.getLng(), request.getRadius());
@@ -30,7 +30,7 @@ public class GeoRestaurantsController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getRestaurants(
+    public ResponseEntity<?> getRestaurantDetails(
             @PathVariable String id,
             @RequestParam double lat,
             @RequestParam double lng
